@@ -6,6 +6,23 @@ const middle_layer=document.querySelector(".middle_layer")
 
 const apiKey='d636883db482156273339c910ced1564'
 
+window.addEventListener("load",()=>{
+    const d=document.getElementById("day");
+    const today_date=document.getElementById("today_date");
+
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    let currentDate=new Date();
+
+    let day=days[currentDate.getDay()]
+    let month=months[currentDate.getMonth()]
+    let date = currentDate.getDate()
+    d.textContent=day
+    today_date.textContent=date+' '+month
+
+})
+
+
 submitBtn.addEventListener("click",(event)=>{
     event.preventDefault()
     const city=document.getElementById("cityName").value
@@ -17,6 +34,7 @@ submitBtn.addEventListener("click",(event)=>{
         getData(city);
     }
 })
+
 
 async function getData(city){
     // console.log(city)
