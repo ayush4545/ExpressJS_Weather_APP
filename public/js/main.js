@@ -39,7 +39,13 @@ submitBtn.addEventListener("click",(event)=>{
 async function getData(city){
     // console.log(city)
     try{
-        let url=`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+        if(location.protocol==="http:"){
+
+            var url=`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+        }else{
+            
+            var url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+        }
         const response= await fetch(url);
         const resJson=await response.json()
         const arrData=[resJson]
